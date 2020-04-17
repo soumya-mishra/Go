@@ -8,11 +8,16 @@
 - variable initialization - x:= 0  or var x = 0
 - 
 package main
+
   import (
     "fmt"
     "time"
     )
+    
  func manin(){
-  fmt.Println("1st prog")
-  fmt.Println("time is time.now())
-  }
+ 
+    fmt.Println("1st prog")
+  
+    fmt.Println("time is time.now())
+  
+ }
