@@ -188,3 +188,14 @@ func main() {
 }
 
 o/p : hello  world
+
+- Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.
+
+- pointer
+- structs
+type Vertex struct {
+	x int
+	y int
+	}
+- array -> var a [10] int
+- 
