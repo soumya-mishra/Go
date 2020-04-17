@@ -6,7 +6,7 @@
 - structural typing
 - concurrency - builtin 
 - variable initialization - x:= 0  or var x = 0
-- 
+
 package main
 
   import (
@@ -21,3 +21,13 @@ package main
     fmt.Println("time is time.now())
   
  }
+
+import package "fmt" "math" 
+
+func main(){
+
+    fmt.Println(math.Pi)
+    
+}
+   
+ 
