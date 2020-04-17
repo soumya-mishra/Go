@@ -103,4 +103,18 @@ func main() {
 - const name = "sss"
 - Constants cannot be declared using the := syntax.
 
+- FOR 
+for i := 0; i < 10; i++ {
 
+		sum += i
+	}
+--------
+
+for ; sum < 1000; {
+		sum += sum
+	}
+---------
+for sum < 1000 {
+		sum += sum
+	}
+---------
