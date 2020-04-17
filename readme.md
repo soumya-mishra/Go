@@ -108,13 +108,31 @@ for i := 0; i < 10; i++ {
 
 		sum += i
 	}
---------
+
+
 
 for ; sum < 1000; {
+
 		sum += sum
 	}
----------
+
 for sum < 1000 {
+
 		sum += sum
 	}
----------
+
+
+- if x < 0 {
+
+  }
+ 
+ - 
+ if v := math.Pow(x, n); v < lim {
+		
+		return v
+		
+	} else {
+		
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+
