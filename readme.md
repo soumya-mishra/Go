@@ -158,11 +158,33 @@ switch os := runtime.GOOS; os {
 	}
 
 -  Switch with no condition is true
+
 switch {
+	
 	case t.Hour() < 12:
+		
 		fmt.Println("Good morning!")
+	
 	case t.Hour() < 17:
+		
 		fmt.Println("Good afternoon.")
+	
 	default:
+		
 		fmt.Println("Good evening.")
 	}
+
+- defer 
+
+package main
+
+import "fmt"
+
+func main() {
+	
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+}
+
+o/p : hello  world
