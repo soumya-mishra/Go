@@ -1,0 +1,5 @@
+- statically types
+- compiled language
+- memory safety
+- grabage collection
+- structural typing
