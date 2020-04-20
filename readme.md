@@ -37,25 +37,33 @@ package main
 import "fmt"
 
 func add(x int, y int) int {
+
 	return x + y
+	
 }
 
 func main() {
+
 	fmt.Println(add(42, 13))
 }
 
 
 - x,y int  also possible in func 
 - multiple return 
-  package main
-  import "fmt"
+ 
+ package main
+ import "fmt"
   
   func swap(x,y string) (string,string){
-      return y, x
-  }
+   
+     return y, x
+ 
+ }
   
   func main() {
+  
   a,b:= swap("hello" ,"world")
+ 
   fmt.Println(a, b)
   
 
