@@ -30,3 +30,17 @@ func main(){
     
 }
    
+## Directory layout:
+GOPATH=/home/user/go
+
+/home/­use­r/go/
+ ­ src/
+ ­ ­ ­ ­hello/
+ ­ ­ ­ ­ ­ ­main.go (package main)
+ ­ bin/
+ ­ ­ ­  hello (installed command)
+ ­ pkg/
+ ­ ­ ­ ­lin­ux_­amd64/ (installed package object)
+ ­ ­ ­ ­git­hub.com/ (3rd party depend­encies)
+
+## 
