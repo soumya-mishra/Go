@@ -44,4 +44,298 @@ GOPATH=/home/user/go
  ­ ­ ­ ­git­hub.com/ (3rd party depend­encies)
 
 
-## 
+## Run go program 
+----------------
+$ cd $HOME/go/src/hello
+$ go run main.go
+Hello, World!!
+$ go build
+$ ./hello
+Hello, World!!
+
+## Package
+------------
+Package declaration at top of every source file
+Executables are should be in package main
+Upper case identifier: public (accessible from other packages)
+Lower case identifier: private (not accessible from other packages)
+
+## Builtin Data types
+-----------------------
+bool
+
+string
+
+int int8 int16 int32 int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // alias for uint8
+
+rune // alias for int32 ~= a character (Unicode code point)
+
+float32 float64
+
+complex64 complex128
+
+## Packages and Module
+-----------------------------
+go get github.com/andanhm/go-prettytimee
+go mod init github.com/andanhm/go-prettytime
+
+## Variable & Function Declarations
+---------------------------------------
+const country = "india"
+
+// declaration without initialization
+var age int
+// declaration with initialization
+var age int = 23
+// declare and init multiple at once
+var age, pincode int = 23, 577002
+// type omitted, will be inferred
+var age = 23
+
+// simple function
+func person() {
+ // shorthand, only within func bodies
+ // type is always implicit
+ age := 23
+}
+
+// Can have function with params
+func person(firstName string, lastName string) {}
+
+// Can have multiple params of the same type
+func person(firstName, lastName string) {}
+
+// Can return type declaration
+func person() int {
+    return 23
+}
+
+// Can return multiple values at once
+func person() (int, string) {
+    return 23, "vinay"
+}
+var age, name = person()
+
+// Can return multiple named results
+func person() (age int, name string) {
+    age = 23
+    name = "vinay"
+    return
+}
+var age, name = person()
+
+// Can return function
+func person() func() (string,string) {
+     area:=func() (string,string) {
+          return "street", "city"
+      }
+      return area
+}
+
+## IF statement 
+-------------------
+if age < 18 {
+      return errors.New("not allowed to enter")
+}
+
+// Conditional statement
+if err := Request("google.com"); err != nil {
+    return err
+}
+
+// Type assertion inside
+var age interface{}
+age = 23
+if val, ok := age.(int); ok {
+    fmt.Println(val)
+}
+
+- we can write a go statement before the condition  err := Request("google.com");
+
+## Loop Statement
+-------------------
+for i := 1; i < 3; i++ {
+}
+// while loop syntax
+for i < 3 {
+}
+// Can omit semicolons if there is only a condition
+for i < 10 {
+}
+// while (true) like syntax
+for {
+}
+
+## Switch 
+-------------
+// switch statement
+switch runtime.GOOS {
+  case "darwin": {
+// cases break automatically
+   }
+   case "linux": {
+   }
+   default:
+}
+
+// can have an assignment statement before the switch statement
+switch os := runtime.GOOS; os {
+case "darwin":
+default:
+}
+
+// comparisons in switch cases
+os := runtime.GOOS
+switch {
+case os == "darwin":
+default:
+}
+
+// cases can be presented in comma-separated lists
+switch os {
+case "darwin", "linux":
+}
+
+## Arrays, Slices
+-------------------
+var a [3]int // declare an int array with length 3.
+var a = [3]int {1, 2, 3} // declare and initialize a slice
+a := [...]int{1, 2} // elipsis -> Compiler figures out array length
+a[0] = 1 // set elements
+i := a[0] // read elements
+var b = a[lo:hi] // creates a slice (view of the array) from index lo to hi-1
+var b = a[1:4] // slice from index 1 to 3
+var b = a[:3] // missing low index implies 0
+var b = a[3:] // missing high index implies len(a)
+a = append(a,17,3) // append items to slice a
+c := append(a,b...) // concatenate slices a and b
+
+// create a slice with make
+a = make([]int, 5, 5) // first arg length, second capacity
+a = make([]int, 5) // capacity is optional
+
+// loop over an array/ slice / struct
+for index, element := range a {
+    
+}
+
+## Maps & struct 
+Maps:-Maps are Go’s built-in associative data type (hashes or dicts)
+Struct:-Structs are the way to create concrete user-defined types in Go. 
+Struct types are declared by composing a fixed set of unique fields.
+
+type Address struct {
+  Street string
+  City string
+}
+
+type Employee struct {
+  Name string
+  Age int
+  Address Address
+}
+
+// Can declare methods on structs.
+func (emp Employee) Display() string {
+  // accessing member
+  name:=emp.Name
+  return fmt.Sprintf("Name %s",name)
+}
+// Initialize the map with the type
+// map key is city value employees working
+bookmyshow := make(map[string][]Employee)
+
+// Create new/updates the key value pair
+bookmyshow["Pune"] = []Employee{}
+bookmyshow["Bangalore"] = []Employee{
+   Employee{
+    Name: "Andan H M",
+    Age: 23,
+    Address: Address{
+     Street: "KB Extension",
+     City: "Davanagere",
+   },
+ },
+},
+
+// Determains the the length of the map
+_ = len(bookmyshow)
+
+// read the item from the map
+employees := bookmyshow["Bangalore"]
+
+// loop over an array, slice, struct array
+for index, element := range employees {
+  // read the element from the struct
+  fmt.Println(index, element.Display())
+}
+
+// Delete the key from the map
+delete(bookmyshow, "Pune")
+
+
+## Interfaces
+Interface type that specifies zero methods is known as the empty interface
+
+var i interface{}
+i = 42
+
+// Reflection: type switch specify types
+switch v := i.(type) {
+ case int:
+   fmt.Printf("(%v, %T)\n", i, i)
+ case string:
+  fmt.Printf("(%v, %T)\n", i, i)
+ default:
+  fmt.Printf("Unknow type %T!\n", v)
+}
+
+Interfaces are named collections of method signatures.
+
+type error interface {
+    Error() string
+}
+
+## Error
+------------
+The error type is an interface type.
+error variable represents description of the error string
+errors.New('user not found')
+fmt.Errorf("%s user not found", "foo")
+
+## HTTP Handler:-
+---------------
+package main
+
+import (
+ "io"
+ "net/http"
+)
+
+func health(w http.ResponseWriter, r *http.Request) {
+  w.WriteHeader(http.StatusOK)
+  io.WriteString(w, "Ok")
+}
+
+func main() {
+ http.HandleFunc("/health", health)
+ http.ListenAndServe(":8080", nil)
+}
+
+##Unit Test:-
+Go has a built-in testing command called go test and a package testing which combine to give
+a minimal but complete testing experience.
+Standard tool-chain also includes benchmarking and code coverage
+
+## Concurrency
+Goroutines are lightweight threads managed by Go
+Channels :Channels are a typed conduit through which you can send 
+and receive values with the channel operator ( <- )
+
+
+
+
+
